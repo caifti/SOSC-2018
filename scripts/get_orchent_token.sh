@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 IAM_CLIENT_ID=dodas-demo
 IAM_CLIENT_SECRET=dodas-demo
