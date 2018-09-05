@@ -104,10 +104,9 @@ node_types:
     interfaces:
       Standard:
         create:
-          implementation: https://raw.githubusercontent.com/indigo-dc/tosca-types/dodas_roll/artifacts/apache/apache_install.yml
+          implementation:  https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/templates/ansible-role-install.yml
         start:
-          #implementation: https://raw.githubusercontent.com/indigo-dc/tosca-types/dodas_roll/artifacts/apache/apache_start.yml
-          implementation:  https://gist.githubusercontent.com/***REMOVED***/cc91f594dd7db24f1ce9303ad9391212/raw/de41e1c7b97a0e2cf4e5236d9bd298c49d552f7c/apache_start.yml
+          implementation:  https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/templates/ansible-role-install.yml
 
   tosca.nodes.indigo.Compute:
     derived_from: tosca.nodes.indigo.MonitoredCompute
