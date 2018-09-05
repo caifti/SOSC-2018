@@ -131,3 +131,33 @@ node_types:
       host:
         type: tosca.capabilities.indigo.Container
         valid_source_types: [tosca.nodes.SoftwareComponent]
+
+  tosca.nodes.indigo.MonitoredCompute:
+    derived_from: tosca.nodes.Compute
+    properties:
+      # Set the current data of the zabbix server
+      # but it can also specified in the TOSCA document
+      zabbix_server:
+        type: string
+        required: no
+        default: orchestrator.cloud.cnaf.infn.it
+      zabbix_server_port:
+        type: tosca.datatypes.network.PortDef
+        required: no
+        default: 10051
+      zabbix_server_metadata:
+        type: string
+        required: no
+        default: Linux      668c875e-9a39-4dc0-a710-17c41376c1e0
+    artifacts:
+      zabbix_agent_role:
+        file: indigo-dc.zabbix-agent
+        type: tosca.artifacts.AnsibleGalaxy.role
+    interfaces:
+      Standard:
+        configure:
+          implementation: https://raw.githubusercontent.com/indigo-dc/tosca-types/master/artifacts/zabbix/zabbix_agent_install.yml
+          inputs:
+            zabbix_server: { get_property: [ SELF, zabbix_server ] }
+            zabbix_server_port: { get_property: [ SELF, zabbix_server_port ] }
+            zabbix_server_metadata: { get_property: [ SELF, zabbix_server_metadata ] }

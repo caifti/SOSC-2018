@@ -9,30 +9,23 @@ topology_template:
 
   inputs:
 
-    monitordb_ip:
+    input test:
       type: string 
-      default: "ES-Endpoint"
- 
-    elasticsearch_secret:
-      type: string
-      default: "ES-secret"
+      default: "test"
  
   node_templates:
 
-    mesos-master-server:
+    create-server-vm:
       type: tosca.nodes.indigo.Compute
       capabilities:
         endpoint:
           properties:
             network_name: PUBLIC
-            dns_name: mesosserverpublic
+            dns_name: apachepublic
             ports:
-              mesos_port:
+              apache_port:
                 protocol: tcp
-                source: 5050
-              marathon_port:
-                protocol: tcp
-                source: 8443
+                source: 80
         scalable:
           properties:
             count: 1 
@@ -44,7 +37,11 @@ topology_template:
           properties:
             image: "ost://cloud.recas.ba.infn.it/1113d7e8-fc5d-43b9-8d26-61906d89d479"
 
+    apache_install:
+      type: tosca.nodes.WebServer.Apache
+      requirements:
+        - host: create-server-vm
 
   outputs:
     vm_ip:
-      value: { concat: [ get_attribute: [ mesos-master-server, public_address, 0 ] ] }
+      value: { concat: [ get_attribute: [ create-server-vm, public_address, 0 ] ] }
