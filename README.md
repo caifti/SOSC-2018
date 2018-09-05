@@ -11,6 +11,7 @@ Second International PhD School on Open Science Cloud.
     - depcreate
     - look at the logs
     - get ip of the vm
+    - log into the VM and check the apache2 service status
     - check the webserver main page
   - homework: create a custom webserver playbook and deploy it
 - Container orchestration [TBC]
