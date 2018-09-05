@@ -14,6 +14,9 @@ Second International PhD School on Open Science Cloud.
     - check the webserver main page
   - homework: create a custom webserver playbook and deploy it
 - Container orchestration [TBC]
+  - Mesos-Marathon deploy
+  - WebServer deployment as Marathon app
+  - Multiple app LoadBalanced
 
 ## Hand-on-Part2
 
