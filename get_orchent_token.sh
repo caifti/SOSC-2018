@@ -2,10 +2,14 @@
 
 IAM_CLIENT_ID=dodas-demo
 IAM_CLIENT_SECRET=dodas-demo
-IAM_USER=dciangot
 
 IAM_CLIENT_ID=${IAM_CLIENT_ID:-iam-client}
 IAM_CLIENT_SECRET=${IAM_CLIENT_SECRET}
+
+echo -ne "IAM User:"
+tty -echo
+read IAM_USER
+tty echo
 
 echo -ne "Password:"
 stty -echo
