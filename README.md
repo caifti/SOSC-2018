@@ -1,4 +1,5 @@
 # SOSC-2018
+
 Second International PhD School on Open Science Cloud.
 
 ## Hands-on-Part1
@@ -21,3 +22,11 @@ Second International PhD School on Open Science Cloud.
 
 ## Hand-on-Part2
 
+- BigData introduction
+- Apache Spark
+  - Spark Cluster Tosca template
+  - Spark Ansible role
+  - Deploy a small cluster
+    - Access to cluster
+    - Python Pi example
+  - Scale on bigger cluster
