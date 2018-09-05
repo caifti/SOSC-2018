@@ -20,7 +20,7 @@ Second International PhD School on Open Science Cloud.
   - WebServer deployment as Marathon app
   - Multiple app LoadBalanced
 
-## Hand-on-Part2
+## Hands-on-Part2
 
 - BigData introduction
 - Apache Spark
