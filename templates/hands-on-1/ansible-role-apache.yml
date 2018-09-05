@@ -5,13 +5,13 @@
   - name: Configure apache 1/2
     get_url:
       force: true
-      url: https://gist.githubusercontent.com/dciangot/68d3c1213e8ecba45cafb7b8a3137484/raw/776535293aba5a9acf99476c3d6f8eff51cbfba6/port.conf
+      url: https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/templates/hands-on-1/apache-config/port.conf
       dest: /etc/apache2/ports.conf
   
   - name: Configure apache 2/2
     get_url:
       force: true
-      url: https://gist.githubusercontent.com/dciangot/0132f9547ce11ef68b47fb710f046db4/raw/e59bec74ed2e54775da8d9eb5d56b98a7089e149/000-default.conf
+      url: https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/templates/hands-on-1/apache-config/000-default.conf
       dest: /etc/apache2/sites-enabled/000-default.conf
 
   - name: Start Apache service
