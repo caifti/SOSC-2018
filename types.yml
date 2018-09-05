@@ -1,0 +1,133 @@
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+capability_types:
+
+  tosca.capabilities.indigo.OperatingSystem:
+    derived_from: tosca.capabilities.OperatingSystem
+    properties:
+      gpu_driver:
+        type: boolean
+        required: no
+      cuda_support:
+        type: boolean
+        required: no
+      cuda_min_version:
+        type: string
+        required: no
+      image:
+        type: string
+        required: no
+      credential:
+        type: tosca.datatypes.Credential
+        required: no
+
+  tosca.capabilities.indigo.Scalable:
+    derived_from: tosca.capabilities.Scalable
+    properties:
+      min_instances:
+        type: integer
+        default: 1
+        required: no
+      max_instances:
+        type: integer
+        default: 1
+        required: no
+      count:
+        type: integer
+        description: the number of resources
+        required: no
+        default: 1
+      removal_list:
+        type: list
+        description: list of IDs of the resources to be removed
+        required: no
+        entry_schema:
+          type: string
+
+  tosca.capabilities.indigo.Container:
+    derived_from: tosca.capabilities.Container
+    properties:
+      instance_type:
+        type: string
+        required: no
+      num_gpus:
+        type: integer
+        required: false
+      gpu_vendor:
+        type: string
+        required: false
+      gpu_model:
+        type: string
+        required: false  
+
+
+  tosca.capabilities.indigo.Endpoint:
+    derived_from: tosca.capabilities.Endpoint
+    properties:
+      dns_name:
+        description: The optional name to register with DNS
+        type: string
+        required: false
+      private_ip:
+        description: Flag used to specify that this endpoint will require also a private IP although it is a public one.
+        type: boolean
+        required: false
+        default: true
+    attributes:
+      credential:
+        type: list
+        entry_schema:
+          type: tosca.datatypes.Credential
+
+
+artifact_types:
+
+  tosca.artifacts.Implementation.YAML:
+    derived_from: tosca.artifacts.Implementation
+    description: YAML Ansible recipe artifact
+    mime_type: text/yaml
+    file_ext: [ yaml, yml ]
+
+  tosca.artifacts.AnsibleGalaxy.role:
+    derived_from: tosca.artifacts.Root
+    description: Ansible Galaxy role to be deployed in the target node
+
+relationship_types:
+
+  tosca.relationships.indigo.Manages:
+    derived_from: tosca.relationships.Root
+
+node_types:
+
+  tosca.nodes.WebServer.Apache:
+    derived_from: tosca.nodes.WebServer
+    interfaces:
+      Standard:
+        create:
+          implementation: https://raw.githubusercontent.com/indigo-dc/tosca-types/dodas_roll/artifacts/apache/apache_install.yml
+        start:
+          implementation: https://raw.githubusercontent.com/indigo-dc/tosca-types/dodas_roll/artifacts/apache/apache_start.yml
+
+  tosca.nodes.indigo.Compute:
+    derived_from: tosca.nodes.indigo.MonitoredCompute
+    attributes:
+      private_address:
+        type: list
+        entry_schema:
+          type: string
+      public_address:
+        type: list
+        entry_schema:
+          type: string
+      ctxt_log:
+        type: string
+    capabilities:
+      scalable:
+        type: tosca.capabilities.indigo.Scalable
+      os:
+         type: tosca.capabilities.indigo.OperatingSystem
+      endpoint:
+        type: tosca.capabilities.indigo.Endpoint
+      host:
+        type: tosca.capabilities.indigo.Container
+        valid_source_types: [tosca.nodes.SoftwareComponent]
