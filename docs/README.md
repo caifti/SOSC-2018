@@ -20,3 +20,9 @@
 - Mesos-Marathon deploy
 - WebServer deployment as Marathon app
 - Multiple app LoadBalanced
+
+## Hads-on-Part2
+
+### [Apache Spark](apache_spark.md)
+
+- Introduction and a view on Spark on Mesos

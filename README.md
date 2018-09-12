@@ -31,5 +31,5 @@ Second International PhD School on Open Science Cloud.
   - Spark Ansible role
   - Deploy a small cluster
     - Access to cluster
-    - Python Pi example
+    - Spark examples
   - Scale on bigger cluster
