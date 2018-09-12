@@ -1,4 +1,4 @@
-### [go back](/SOSC-2018)
+### [◀](/SOSC-2018)
 
 ## Deploy of the Spark Cluster
 
