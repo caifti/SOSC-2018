@@ -12,3 +12,11 @@ standalone mode, over YARN, or Apache Mesos - either on your local cluster or
 in the cloud.
 
 ![Spark Ecosystem](/img/spark_ecosystem.png)
+
+## How it works
+
+Any Spark application spins off a single driver process (that can contain multiple
+jobs) on the master node that then directs executor processes (that contain multiple
+tasks) distributed to a number of worker nodes.
+
+![Spark Execution](/img/spark_execution.png)
