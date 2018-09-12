@@ -20,3 +20,18 @@ jobs) on the master node that then directs executor processes (that contain mult
 tasks) distributed to a number of worker nodes.
 
 ![Spark Execution](/img/spark_execution.png)
+
+## Spark on Mesos
+
+Apache Spark can use as manager [Apache Mesos](http://mesos.apache.org/).
+
+The advantages of deploying Spark with Mesos include:
+
+* dynamic partitioning between Spark and other frameworks
+* scalable partitioning between multiple instances of Spark
+
+### How it works
+
+The Mesos master replaces the Spark master as the cluster manager, the workflow of the application doesn't have changed.
+
+![Spark on Mesos](/img/cluster-overview.png)

@@ -25,8 +25,6 @@ Second International PhD School on Open Science Cloud.
 - Apache Spark
   - Introduction
   - Spark on Mesos
-    - Client mode
-    - Cluster mode
   - Spark Cluster Tosca template
   - Spark Ansible role
   - Deploy a small cluster
