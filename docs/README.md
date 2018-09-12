@@ -26,3 +26,12 @@
 ### [Apache Spark](apache_spark.md)
 
 - Introduction and a view on Spark on Mesos
+
+### [Spark Components](spark_components.md)
+
+- Exploitation of the pricipal components needed for a Spark Cluster with Mesos
+
+### [Spark Cluster](spark_cluster.md)
+
+- Deploy a personal cluster to test Apache Spark
+- View on few examples

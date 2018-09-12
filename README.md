@@ -27,6 +27,7 @@ Second International PhD School on Open Science Cloud.
   - Spark on Mesos
   - Spark Cluster Tosca template
   - Spark Ansible role
+  - Spark Docker image
   - Deploy a small cluster
     - Access to cluster
     - Spark examples
