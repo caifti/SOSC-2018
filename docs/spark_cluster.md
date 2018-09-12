@@ -141,7 +141,8 @@ sc = SparkContext(conf=conf)
 spark = SparkSession(sc).builder.getOrCreate()
 
 data = sc.parallelize([
-    ('Amber', 22), ('Alfred', '23'), ('Skye',4), ('Albert', '12'), ('Amber', 9)
+    ('Amber', 21), ('Alfred', '23'), ('Skye',4), ('Albert', '11'), ('Amber', 9),
+    ('Jane', 66), ('Batman', '42'), ('Bill',1), ('Rose', '111'), ('Roland', 89),
 ])
 
 # Convert all ages to int and then sort tuples by ages
