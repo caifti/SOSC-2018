@@ -177,6 +177,7 @@ topology_template:
         spark_swift_password: { get_input: spark_swift_password }
         spark_swift_provider: { get_input: spark_swift_provider }
         spark_mesos_deploy_app: { get_input: spark_mesos_flavor }
+        spark_slave_num: { get_input: slave_num }
       requirements:
         - host: mesos_master
         - dependency: mesos_master
@@ -282,7 +283,7 @@ topology_template:
 
   outputs:
     spark_bastion:
-      value: { concat: [ get_attribute: [ mesos_lb_server, public_address, 0 ], ':31042' ] }
+      value: { concat: [ 'ssh admin@', get_attribute: [ mesos_lb_server, public_address, 0 ], ' -p 31042' ] }
     mesos_endpoint:
       value: { concat: [ 'http://', get_attribute: [ mesos_master_server, public_address, 0 ], ':5050' ] }
     marathon_endpoint:
