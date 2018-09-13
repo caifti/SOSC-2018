@@ -500,3 +500,6 @@ node_types:
 
   tosca.capabilities.indigo.MesosSlave:
     derived_from: tosca.capabilities.Container
+  
+  tosca.nodes.indigo.MesosMaster:
+    derived_from: tosca.nodes.indigo.LRMS.FrontEnd.Mesos
