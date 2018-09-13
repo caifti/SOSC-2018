@@ -494,3 +494,9 @@ node_types:
           relationship: tosca.relationships.HostedOn
           node: tosca.nodes.SoftwareComponent
           occurrences: [1, 1]
+  
+  tosca.capabilities.indigo.MesosMaster:        
+    derived_from: tosca.capabilities.Container
+
+  tosca.capabilities.indigo.MesosSlave:
+    derived_from: tosca.capabilities.Container
