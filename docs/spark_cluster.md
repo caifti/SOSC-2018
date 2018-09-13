@@ -159,5 +159,5 @@ Run the application with the following command:
 
 ```bash
 wgey https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/data/ipsum.txt
-spark-run --conf spark.mesos.uris=https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/data/ipsum.txt test_word_count.py
+spark-run test_word_count.py
 ```
