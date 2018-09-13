@@ -121,11 +121,14 @@ Let's create a file named `test_word_count.py` with the following code:
 #! -*- coding: utf-8 -*-
 from __future__ import print_function
 
+import sys
+from operator import add
+
 from pyspark.sql import SparkSession
 from pyspark import SparkConf, SparkContext
-    
+
 # Configure your application
-conf = SparkConf().setAppName("PythonSort")
+conf = SparkConf().setAppName("PythonWordCount")
 # Executor parameters
 conf.set('spark.executor.memory', '512m')
 conf.set('spark.executor.cores', '1')
@@ -140,20 +143,13 @@ sc = SparkContext(conf=conf)
 
 spark = SparkSession(sc).builder.getOrCreate()
 
-data = sc.parallelize([
-    ('Amber', 21), ('Alfred', '23'), ('Skye',4), ('Albert', '11'), ('Amber', 9),
-    ('Jane', 66), ('Batman', '42'), ('Bill',1), ('Rose', '111'), ('Roland', 89),
-])
+with open("ipsum.txt") as text_file:
+    lines = sc.parallelize(text_file.readlines())
 
-# Convert all ages to int and then sort tuples by ages
-sortedCount = data.map(
-        lambda elm: ( elm[0], int(elm[1]) )
-    ).sortBy(
-    lambda elm: elm[1])
-
-output = sortedCount.collect()
-for (name, age) in output:
-    print(name, age)
+counts = lines.flatMap(lambda x: x.split(' ')).map(lambda x: (x, 1)).reduceByKey(add)
+output = counts.sortBy(lambda elm: elm[1]).collect()
+for (word, count) in output:
+    print("%s: %i" % (word, count))
 
 spark.stop()
 
