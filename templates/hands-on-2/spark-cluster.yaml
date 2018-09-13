@@ -85,6 +85,7 @@ topology_template:
       type: string
       description: HDFS URI needed to configure Spark storage
       required: no
+      default: ''
 
     spark_cores_max:
       type: integer
