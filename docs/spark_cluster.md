@@ -2,6 +2,12 @@
 
 ## Deploy of the Spark Cluster
 
+You can use orchent as you have seen in the previous hands-on:
+
+``` bash
+orchent depcreate  templates/hands-on-2/spark-cluster.yaml '{}'
+```
+
 ## Examples
 
 Now let's play a bit with the Spark framework.
