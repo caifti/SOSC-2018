@@ -35,7 +35,7 @@ topology_template:
     master_cpus:
       type: integer
       description: Numer of CPUs for the master node
-      default: 1
+      default: 2
       required: yes
 
     master_mem:
@@ -47,7 +47,7 @@ topology_template:
     slave_num:
       type: integer
       description: Number of slave nodes in the cluster
-      default: 2
+      default: 3
       required: yes
 
     slave_cpus:
