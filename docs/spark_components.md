@@ -69,4 +69,31 @@ This last part involves also the Personalization from the final user, that can p
 
 ## Spark Ansible role
 
+You can find the current Ansible role for Spark [here](https://github.com/indigo-dc/ansible-role-spark-mesos/tree/update_spark).
+
+If you take a look on the task file you will see that is basically a launcher of Marathon application, so, it will deploy our personalized Docker images with the Spark environment.
+
+```yaml
+[...]
+
+- name: "[Spark-Mesos] deploy app container on Marathon"
+  run_once: true
+  uri:
+     url: "{{marathon_protocol}}://marathon.service.consul:{{marathon_port}}/v2/apps"
+     user: "{{marathon_username}}"
+     password: "{{marathon_password}}"
+     validate_certs: "no"
+     method: POST
+     HEADER_Content-Type: "application/json"
+     body: "{{ lookup('template', 'templates/{{app_name}}.json') }}"
+     body_format: json
+     status_code: 201
+  register: post_result
+  when: get_result.status == 404
+  tags:
+    - spark
+
+[...]
+```
+
 ## Spark Docker image
