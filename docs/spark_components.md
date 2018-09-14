@@ -97,3 +97,10 @@ If you take a look on the task file you will see that is basically a launcher of
 ```
 
 ## Spark Docker image
+
+The docker image is available from [Dockerhub](https://hub.docker.com/r/indigodatacloudapps/mesos-spark/).
+
+You can find on the corrispondent [Github repository](https://github.com/indigo-dc/dodas-docker-img_mesos_spark) the receipes that form our containers. In details the Dockerfiles present in the various branches are organized with the following targets:
+
+* base: installs all the common dependencies. This will be the base spark image that is used also execute jobs;
+* bastion: installs also some management scripts to dispatch jobs and a user accessible environment.
