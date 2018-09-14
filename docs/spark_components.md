@@ -2,7 +2,7 @@
 
 ## Cluster schema
 
-Our cluster will have different components with specific tasks. For the basic functionalities we need a master node (machine) that can orchestrate and coordinate our resources. Plus, we need some worker nodes (or slaves), that will do the dirty work. Finally, we need a load balancer to manage connection from the external world.
+Our cluster will have different components with specific tasks. For the basic functionalities we need a master node (machine) that can orchestrate and coordinate our resources. Plus, we need some worker nodes (or slaves), that will do the dirty work. Finally, we need a load balancer to manage connection from the external world. In fact, we will not have access to the whole cluster, but only on few components to control the service and use it.
 
 Such schema is visible in the following picture:
 
@@ -18,6 +18,54 @@ This kind of organization is useful because we use the [container](https://www.d
 
 
 ## Spark Cluster Tosca template
+
+The tosca template will have the components described above, you can find the `yaml` file [here](https://github.com/DODAS-TS/SOSC-2018/blob/master/templates/hands-on-2/spark-cluster.yaml).
+
+In details we create some compute nodes that are simple machines with and OS:
+
+```yaml
+mesos_master_server:
+    type: tosca.nodes.indigo.Compute
+    [...]
+
+mesos_slave_server:
+    type: tosca.nodes.indigo.Compute
+    [...]
+
+mesos_lb_server:
+    type: tosca.nodes.indigo.Compute
+    [...]
+```
+
+The master server and the load balancer server will also have a public IP to be reached from outside the infrastructure.
+
+We have to install the Mesos framework to finally use our service, and you can find this part in the following sections:
+
+```yaml
+mesos_master:
+    type: tosca.nodes.indigo.MesosMaster
+    [...]
+
+mesos_slave:
+    type: tosca.nodes.indigo.MesosSlave
+    [...]
+
+mesos_load_balancer:
+    type: tosca.nodes.indigo.MesosLoadBalancer
+    [...]
+```
+
+All the roles now are more specific and they will prepare the nodes to accomplish their duty.
+
+After this preparation we can inject our service with the proper receipe:
+
+```yaml
+spark_application:
+    type: tosca.nodes.indigo.SparkMesos
+    [...]
+```
+
+This last part involves also the Personalization from the final user, that can personalize the service despite the resource manager used.
 
 ## Spark Ansible role
 
