@@ -162,14 +162,14 @@ counts = lines.flatMap(lambda x: x.split(' ')).map(lambda x: (x, 1)).reduceByKey
 with open("output_WordCount.txt", "w") as output:
     results = counts.sortBy(lambda elm: elm[1]).collect()
     print("-----[!]-----[My Spark Application]")
-    print("Word|  Count")
+    print("Word |  Count")
     print("-"*16)
     output.write("[My Spark Application]\n")
-    output.write("Word|  Count\n")
+    output.write("Word |  Count\n")
     output.write("-"*16 + "\n")
     for (word, count) in results:
-        print("{}|  {}".format(word, count))
-        output.write("{}|  {}\n".format(word, count))
+        print("{} |  {}".format(word, count))
+        output.write("{} |  {}\n".format(word, count))
     print("-"*16)
     output.write("-"*16 + "\n")
 
