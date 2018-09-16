@@ -26,15 +26,13 @@ from random import random
 
 from pyspark import SparkConf, SparkContext
 
-# Configure your application
+# Application configuration
 conf = SparkConf().setAppName("PiCalc")
-# Executor parameters
-conf.set('spark.executor.memory', '512m')
-conf.set('spark.executor.cores', '1')
-conf.set('spark.executor.cores.max', '2')
-conf.set('spark.cores.max', '2')
-# the default docker image to use as worker node
-conf.set('spark.mesos.executor.docker.image', 'dodasts/mesos-spark:base')
+# Executor parameters personalization
+# conf.set('spark.executor.memory', '512m')
+# conf.set('spark.executor.cores', '1')
+# conf.set('spark.executor.cores.max', '2')
+conf.set('spark.cores.max', '4')
 
 # Spark Context
 sc = SparkContext(conf=conf)
@@ -49,11 +47,14 @@ def foo(_):
     return 1 if x ** 2 + y ** 2 <= 1 else 0
 
 
-print("[My Spark Application] Start the calculus")
-# Launch the application in parallel
-count = sc.parallelize(range(1, _N_ + 1), PARTITIONS).map(foo).reduce(add)
+with open("output_PiCalc.txt", "w") as output:
+    print("-----[!]-----[My Spark Application] Start the calculus")
+    output.write("[My Spark Application] Start the calculus\n")
+    # Launch the application in parallel
+    count = sc.parallelize(range(1, _N_ + 1), PARTITIONS).map(foo).reduce(add)
 
-print("[My Spark Application] Pi is roughly {}".format(4.0 * count / _N_))
+    print("-----[!]-----[My Spark Application] Pi is roughly {}".format(4.0 * count / _N_))
+    output.write("[My Spark Application] Pi is roughly {}\n".format(4.0 * count / _N_))
 
 # Exit Spark Context
 sc.stop()
@@ -78,16 +79,13 @@ from __future__ import print_function
 from pyspark.sql import SparkSession
 from pyspark import SparkConf, SparkContext
     
-# Configure your application
-conf = SparkConf().setAppName("PythonSort")
-# Executor parameters
-conf.set('spark.executor.memory', '512m')
-conf.set('spark.executor.cores', '1')
-conf.set('spark.executor.cores.max', '1')
-conf.set('spark.cores.max', '2')
-
-# the default docker image to use as worker node
-conf.set('spark.mesos.executor.docker.image', 'dodasts/mesos-spark:base')
+# Application configuration
+conf = SparkConf().setAppName("Sort")
+# Executor parameters personalization
+# conf.set('spark.executor.memory', '512m')
+# conf.set('spark.executor.cores', '1')
+# conf.set('spark.executor.cores.max', '1')
+# conf.set('spark.cores.max', '2')
 
 # Spark Context
 sc = SparkContext(conf=conf)
@@ -104,9 +102,19 @@ sortedCount = data.map(
     ).sortBy(
     lambda elm: elm[1])
 
-output = sortedCount.collect()
-for (name, age) in output:
-    print(name, age)
+with open("output_Sort.txt", "w") as output:
+    sorted_data = sortedCount.collect()
+    print("-----[!]-----[My Spark Application]")
+    print("Name\t|  Age")
+    print("-"*16)
+    output.write("[My Spark Application]\n")
+    output.write("Name\t|  Age\n")
+    output.write("-"*16 + "\n")
+    for (name, age) in sorted_data:
+        print("{}\t|  {}".format(name, age))
+        output.write("{}\t|  {}\n".format(name, age))
+    print("-"*16)
+    output.write("-"*16 + "\n")
 
 spark.stop()
 
@@ -133,16 +141,13 @@ from operator import add
 from pyspark.sql import SparkSession
 from pyspark import SparkConf, SparkContext
 
-# Configure your application
+# Application configuration
 conf = SparkConf().setAppName("PythonWordCount")
-# Executor parameters
-conf.set('spark.executor.memory', '512m')
-conf.set('spark.executor.cores', '1')
-conf.set('spark.executor.cores.max', '1')
-conf.set('spark.cores.max', '2')
-
-# the default docker image to use as worker node
-conf.set('spark.mesos.executor.docker.image', 'dodasts/mesos-spark:base')
+# Executor parameters personalization
+# conf.set('spark.executor.memory', '512m')
+# conf.set('spark.executor.cores', '1')
+# conf.set('spark.executor.cores.max', '1')
+# conf.set('spark.cores.max', '2')
 
 # Spark Context
 sc = SparkContext(conf=conf)
@@ -153,9 +158,20 @@ with open("ipsum.txt") as text_file:
     lines = sc.parallelize(text_file.readlines())
 
 counts = lines.flatMap(lambda x: x.split(' ')).map(lambda x: (x, 1)).reduceByKey(add)
-output = counts.sortBy(lambda elm: elm[1]).collect()
-for (word, count) in output:
-    print("%s: %i" % (word, count))
+
+with open("output_WordCount.txt", "w") as output:
+    results = counts.sortBy(lambda elm: elm[1]).collect()
+    print("-----[!]-----[My Spark Application]")
+    print("Word|  Count")
+    print("-"*16)
+    output.write("[My Spark Application]\n")
+    output.write("Word|  Count\n")
+    output.write("-"*16 + "\n")
+    for (word, count) in results:
+        print("{}|  {}".format(word, count))
+        output.write("{}|  {}\n".format(word, count))
+    print("-"*16)
+    output.write("-"*16 + "\n")
 
 spark.stop()
 
@@ -164,6 +180,6 @@ spark.stop()
 Run the application with the following command:
 
 ```bash
-wgey https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/data/ipsum.txt
+wget https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/data/ipsum.txt
 spark-run test_word_count.py
 ```
