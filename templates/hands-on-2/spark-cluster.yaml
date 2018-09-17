@@ -4,7 +4,7 @@ imports:
   - indigo_custom_types: https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/templates/common/types.yml
 
 description: >
-    TOSCA template for deploying Spark + Mesos cluster. The following flavors can be selected setting the input spark_mesos_flavor:
+    TOSCA template for deploying Spark + Mesos cluster. The following flavors can be selected setting the input spark_mesos_flavor
 
 topology_template:
 
