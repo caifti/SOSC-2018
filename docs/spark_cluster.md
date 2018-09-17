@@ -22,13 +22,28 @@ Monitor the cluster deployment with the `depshow` command and then get from the 
 orchent depshow <deployment ID>
 ```
 
+You will see a key named `spark_bastion` that has already the command to connect to the cluster bastion. Use such command to start to interact with Spark:
+
+```bash
+ssh admin@<Bastion public IP> -p 31042
+```
+
 ## Examples
 
-Now let's play a bit with the Spark framework.
+Now let's play a bit with the Spark framework. First of all let's copy the scripts inside the bastion:
+
+```bash
+scp -P 31042 scripts/spark/test_* admin@<Bastion public IP>:
+scp -P 31042 data/ipsum.txt admin@<Bastion public IP>:
+# And after that login again into the bastion
+ssh admin@<Bastion public IP> -p 31042
+```
+
+Your environment now it's ready to run the examples.
 
 ### Calculus of pi
 
-Let's create a file named `test_pi.py` with the following code:
+The `test_pi.py` code is the following:
 
 ```python
 #!/usr/bin/env python
@@ -75,7 +90,7 @@ sc.stop()
 
 ```
 
-Run the application with the following command:
+Run the application with the command:
 
 ```bash
 spark-run test_pi.py
@@ -83,7 +98,7 @@ spark-run test_pi.py
 
 ### List sort
 
-Let's create a file named `test_sort.py` with the following code:
+The sort example, `test_sort.py`, has the following code:
 
 ```python
 #!/usr/bin/env python
@@ -134,7 +149,7 @@ spark.stop()
 
 ```
 
-Run the application with the following command:
+Run the application with the command:
 
 ```bash
 spark-run test_sort.py
@@ -142,7 +157,7 @@ spark-run test_sort.py
 
 ### Word count
 
-Let's create a file named `test_word_count.py` with the following code:
+The last example is `test_word_count.py`:
 
 ```python
 #!/usr/bin/env python
@@ -194,7 +209,6 @@ spark.stop()
 Run the application with the following command:
 
 ```bash
-wget https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/data/ipsum.txt
 spark-run test_word_count.py
 ```
 
