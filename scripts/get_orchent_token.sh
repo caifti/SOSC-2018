@@ -23,7 +23,9 @@ res=$(curl -s -L \
   -d username=${IAM_USER} \
   -d password=${IAM_PASSWORD} \
   -d scope="openid profile email offline_access" \
-  ${IAM_ENDPOINT:-https://dodas-iam.cloud.cnaf.infn.it/token} |  jq '.access_token')
+  ${IAM_ENDPOINT:-https://dodas-iam.cloud.cnaf.infn.it/token} > .token &&
+  python -c "import json; print(json.load(open('.token'))[access_token]);"
+)
 
 
 if [ $? != 0 ]; then
