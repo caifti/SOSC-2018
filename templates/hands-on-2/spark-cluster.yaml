@@ -288,5 +288,7 @@ topology_template:
       value: { concat: [ 'http://', get_attribute: [ mesos_master_server, public_address, 0 ], ':5050' ] }
     marathon_endpoint:
       value: { concat: [ 'https://', get_attribute: [ mesos_master_server, public_address, 0 ], ':8443' ] }
+    master_creds:
+      value: { get_attribute: [ mesos_master_server, endpoint, credential, 0 ] }
 
 
