@@ -1,10 +1,43 @@
-# Platform as a service
+### [◀](/SOSC-2018)
 
-## Why a PaaS
+# Introduction to cloud platforms
 
-## Example: Indigo-dc PaaS orchestrator
+When working with cloud resources, depending on the user needs, different layers of underlyng abstraction can be needed, and depending on how many layers and their composition one can define different categories.
 
-### Using TOSCA
+![PaaS](img/platform-spectrum-small.png)
+
+This part of the hands-on will focus on PaaS, for other "as a Service", take a look at this interesting post [here](https://mesosphere.com/blog/iaas-vs-caas-vs-paas-vs-faas/) from which the pictures credits are.
+
+## Platform as a Service on top of Infrastracture as a Service
+
+![PaaS](img/PaaS-IaaS.png)
+
+
+Infrastructure as a service (IaaS)  is a cloud computing offering in which a vendor provides users access to computing resources such as servers, storage and networking. Organizations use their own platforms and applications within a service provider’s infrastructure.
+
+Key features:
+
+- Instead of purchasing hardware outright, users pay for IaaS on demand.
+- Infrastructure is scalable depending on processing and storage needs.
+- Saves enterprises the costs of buying and maintaining their own hardware.
+- Because data is on the cloud, there can be no single point of failure.
+- Enables the virtualization of administrative tasks, freeing up time for other work.
+
+Platform as a service (PaaS) is a cloud computing offering that provides users with a cloud environment in which they can develop, manage and deliver applications. In addition to storage and other computing resources, users are able to use a suite of prebuilt tools to develop, customize and test their own applications.
+
+Key features:
+
+- SaaS vendors provide users with software and applications via a subscription model.
+- Users do not have to manage, install or upgrade software; SaaS providers manage this.
+- Data is secure in the cloud; equipment failure does not result in loss of data.
+- Use of resources can be scaled depending on service needs.
+- Applications are accessible from almost any internet-connected device, from virtually anywhere in the world.
+
+__In this hands-on a webserver will be deployed on cloud resources in an automated way thanks the use of a PaaS orchestrator and TOSCA system description files.__
+
+## INDIGO-DC PaaS orchestrator
+
+[The INDIGO PaaS Orchestrator](https://github.com/indigo-dc/orchestrator) allows to instantiate resources on Cloud Management Frameworks (like OpenStack and OpenNebula) platforms based on deployment requests that are expressed through templates written in [TOSCA YAML Simple Profile v1.0](https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.0/csprd01/TOSCA-Simple-Profile-YAML-v1.0-csprd01.html), and deploys them on the best cloud site available.
 
 ### Install orchent client
 
@@ -35,6 +68,12 @@ Copy and paste the export command to source the correct environement along with 
 ``` bash
 export ORCHENT_URL=https://orchestrator.cloud.cnaf.infn.it/orchestrator
 ```
+
+### Using TOSCA
+
+The TOSCA metamodel uses the concept of service templates to describe cloud workloads as a topology template, which is a graph of node templates modeling the components a workload is made up of and as relationship templates modeling the relations between those components. TOSCA further provides a type system of node types to describe the possible building blocks for constructing a service template, as well as relationship type to describe possible kinds of relations. Both node and relationship types may define lifecycle operations to implement the behavior an orchestration engine can invoke when instantiating a service template. For example, a node type for some software product might provide a ‘create’ operation to handle the creation of an instance of a component at runtime, or a ‘start’ or ‘stop’ operation to handle a start or stop event triggered by an orchestration engine. Those lifecycle operations are backed by implementation artifacts such as scripts or Chef recipes that implement the actual behavior.
+
+The TOSCA simple profile assumes a number of base types (node types and relationship types) to be supported by each compliant environment such as a ‘Compute’ node type, a ‘Network’ node type or a generic ‘Database’ node type. Furthermore, it is envisioned that a large number of additional types for use in service templates will be defined by a community over time. Therefore, template authors in many cases will not have to define types themselves but can simply start writing service templates that use existing types. In addition, the simple profile will provide means for easily customizing and extending existing types, for example by providing a customized ‘create’ script for some software.
 
 ### Deploy webserver on the cloud: TOSCA types
 
@@ -317,4 +356,4 @@ Deployment [28dc62e6-facc-4f70-bc14-4a32e1149c94]:
     template [https://orchestrator.cloud.cnaf.infn.it/orchestrator/deployments/28dc62e6-facc-4f70-bc14-4a32e1149c94/template]
 ```
 
-TODO: login into the machine
+__TODO: login into the machine__

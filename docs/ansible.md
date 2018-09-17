@@ -1,10 +1,22 @@
+### [◀](/SOSC-2018)
+
 # Automation with Ansible
 
 ## What's Ansible
 
+[![ansible](img/ansible.webp)](https://dodas-ts.github.io/SOSC-2018/img/img/ansible.webp)
+
+[Ansible](https://www.ansible.com) is a software that consistently automatize the configuration management. The Ansible configurations are a set of minimal infrastracture descriptions that are easy to read and to mantain, reducing the amount of work needed to setup environment and softwares on data centers or even on a laptop.
+Ansible does not require any remote agents and delivers all modules to remote systems that execute tasks, as needed, to deploy the desired configuration.
+[Ansible Galaxy](https://galaxy.ansible.com/) also has over 4,000 community-provided roles that can be used by anyone and tailored to different environments.
+
+__In this hands-on we are going to deploy a simple web server application as a first introduction to Ansible recipes.__
+
 ## Hello word: install and deploy a webserver with Ansible
 
 ### Playbooks
+
+Playbooks are the Ansible building blocks. They describes the desired infrastracture with a sequence of states and checks, that will be automatically deployed at installation time. Ansible infact implements a "state-driven" paradigm, that does not indicate the exact chain of commands but instead check a sequential list of machine state. But let's do an exercise to understand better the basics.
 
 - install the apache2 packages on localhost
 
@@ -65,3 +77,5 @@ ansible-playbook templates/hands-on-1/ansible-role-apache.yaml
 ```
 
 - the apache default webpage should now being served at `localhost:4880`
+
+__N.B. with this simple configuration files we will be able to reproduce with a single command the current state on different machines. Of course this is a very simple software installation that is meant as demonstrator, but in principle can be much more complicated.__

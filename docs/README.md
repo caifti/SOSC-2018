@@ -15,11 +15,10 @@
 
 - deploy webserver within container
 
-### Container orchestration
+### [Container orchestration deployment](mesos.md)
 
-- Mesos-Marathon deploy
-- WebServer deployment as Marathon app
-- Multiple app LoadBalanced
+- Mesos-Marathon deployment
+  - needed for the second part
 
 ## Hads-on-Part2
 
