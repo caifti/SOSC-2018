@@ -349,7 +349,10 @@ Deployment [28dc62e6-facc-4f70-bc14-4a32e1149c94]:
   CloudProviderName: provider-BARI
   outputs:
   {
-      "vm_ip": "90.147.75.108"
+      "vm_ip": "90.147.75.108",
+      "cluster_credentials": {
+          "token": "-----BEGIN RSA PRIVATE KEY-----dasdgdsg............\n-----END RSA PRIVATE KEY-----\n"
+      }
   }
   links:
     self [https://orchestrator.cloud.cnaf.infn.it/orchestrator/deployments/28dc62e6-facc-4f70-bc14-4a32e1149c94]
@@ -357,4 +360,10 @@ Deployment [28dc62e6-facc-4f70-bc14-4a32e1149c94]:
     template [https://orchestrator.cloud.cnaf.infn.it/orchestrator/deployments/28dc62e6-facc-4f70-bc14-4a32e1149c94/template]
 ```
 
-__TODO: login into the machine__
+### Login into the deployed machine
+
+``` bash
+echo -e "-----BEGIN RSA PRIVATE KEY-----\n................\n-----END RSA PRIVATE KEY-----\n" > key.key
+chmod 600 key.key
+ssh -i key.key <vm_ip> -l cloudadm
+```

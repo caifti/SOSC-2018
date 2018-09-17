@@ -1,5 +1,12 @@
 ### [◀](/SOSC-2018)
 
+Before starting download the hands-on repository and move inside the directory as follow:
+
+```bash
+git clone https://github.com/DODAS-TS/SOSC-2018.git
+cd SOSC-2018
+```
+
 # Automation with Ansible
 
 ## What's Ansible
