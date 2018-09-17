@@ -37,3 +37,31 @@ The advantages of deploying Spark with Mesos include:
 The Mesos master replaces the Spark master as the cluster manager, the workflow of the application doesn't have changed.
 
 ![Spark on Mesos](/img/cluster-overview.png)
+
+There are two different mode with which you can spawn the Spark driver on Mesos:
+
+- Client Mode
+- Cluster Mode
+
+#### Client Mode
+
+With this modality the driver will be launched directly on the client machine, so your computer or VM. In this case the driver needs some information about the location of Spark and the executor URI. The driver will request directly to Mesos which will create severla Mesos tasks that correspond to the Spark tasks to be executed.
+
+You will receive the result directly because you start the driver.
+
+#### Cluster Mode
+
+With this mode Mesos will launch a Driver Task that will manage your Spark tasks and you will retreive the results with Mesos.
+
+#### Mesos on Spark configuration
+
+Spark can work with Mesos in _Coarse-Grained_ mode that means the Spark tasks match the Mesos tasks. For this reason you have to specify some sizes which concern the specifications of the individual tasks:
+
+- _spark.executor.memory_
+- _spark.executor.cores_
+- _spark.cores.max_
+- _spark.executor.cores_
+
+Plus we can configure a dynamic resource allocation which can resize the number of executors based on statistics of the application and the current resources available.
+
+> For more information you can read the [main guide](https://spark.apache.org/docs/latest/running-on-mesos.html)
