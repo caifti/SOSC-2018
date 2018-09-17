@@ -12,6 +12,7 @@ This part of the hands-on will focus on PaaS, for other "as a Service", take a l
 
 ![PaaS](img/PaaS-IaaS.png)
 
+__TODO__ rephrase
 
 Infrastructure as a service (IaaS)  is a cloud computing offering in which a vendor provides users access to computing resources such as servers, storage and networking. Organizations use their own platforms and applications within a service provider’s infrastructure.
 
