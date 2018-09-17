@@ -8,6 +8,20 @@ You can use orchent as you have seen in the previous hands-on:
 orchent depcreate  templates/hands-on-2/spark-cluster.yaml '{}'
 ```
 
+## Access to the cluster
+
+Check your infrastructure id with the following command:
+
+```bash
+orchent depls --created_by=me
+```
+
+Monitor the cluster deployment with the `depshow` command and then get from the output the endpoints:
+
+``` bash
+orchent depshow <deployment ID>
+```
+
 ## Examples
 
 Now let's play a bit with the Spark framework.
@@ -182,4 +196,12 @@ Run the application with the following command:
 ```bash
 wget https://raw.githubusercontent.com/DODAS-TS/SOSC-2018/master/data/ipsum.txt
 spark-run test_word_count.py
+```
+
+## Delete the cluster
+
+Now you can remove the entire cluster using the following command:
+
+``` bash
+orchent depdel <deployment ID>
 ```
