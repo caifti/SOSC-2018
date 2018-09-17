@@ -82,3 +82,5 @@ MapReduce algorithms involves imposing the key-value structure on arbitrary data
 3. All values are grouped by keys and sorted
 4. Call a defined reduce function (_that describes how we get to see all the values for a key_) on every unique key and its list of values.
     > this produce an intermediate key-value pairs, that will be the output
+
+![Spark on Mesos](/img/mapreduce_example.png)
