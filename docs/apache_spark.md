@@ -65,3 +65,20 @@ Spark can work with Mesos in _Coarse-Grained_ mode that means the Spark tasks ma
 Plus we can configure a dynamic resource allocation which can resize the number of executors based on statistics of the application and the current resources available.
 
 > For more information you can read the [main guide](https://spark.apache.org/docs/latest/running-on-mesos.html)
+
+## MapReduce tips
+
+MapReduce is a model to process large data sets and is inspired to homonymous primitives of functional programming languages.
+
+The base structure used in this model is the key-value pairs. Keys and values may be primitives or complex data structures.
+
+MapReduce algorithms involves imposing the key-value structure on arbitrary datasets.
+
+### Model steps
+
+1. Split the input in key-value pairs
+2. Call a defined map function (_that describes how we get the keys_) for each key-value pairs 
+    > this produce an intermediate key-value pairs
+3. All values are grouped by keys and sorted
+4. Call a defined reduce function (_that describes how we get to see all the values for a key_) on every unique key and its list of values.
+    > this produce an intermediate key-value pairs, that will be the output
