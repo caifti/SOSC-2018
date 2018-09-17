@@ -300,6 +300,8 @@ topology_template:
   outputs:
     vm_ip:
       value: { concat: [ get_attribute: [ create-server-vm, public_address, 0 ] ] }
+    cluster_credentials:
+      value: { get_attribute: [ create-server-vm, endpoint, credential, 0 ] }
 ```
 
 To start the deployment:
