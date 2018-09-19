@@ -186,7 +186,8 @@ spark = SparkSession(sc).builder.getOrCreate()
 with open("ipsum.txt") as text_file:
     lines = sc.parallelize(text_file.readlines())
 
-counts = lines.flatMap(lambda x: x.split(' ')).map(lambda x: (x, 1)).reduceByKey(add)
+counts = lines.flatMap(lambda x: x.split(' ')).map(lambda x: x.replace(
+    ",", "").replace(".", "")).map(lambda x: (x, 1)).reduceByKey(add)
 
 with open("output_WordCount.txt", "w") as output:
     results = counts.sortBy(lambda elm: elm[1]).collect()
@@ -197,8 +198,8 @@ with open("output_WordCount.txt", "w") as output:
     output.write("Word |  Count\n")
     output.write("-"*16 + "\n")
     for (word, count) in results:
-        print("{} |  {}".format(word, count))
-        output.write("{} |  {}\n".format(word, count))
+        print("[{:3}]-> {}".format(count, word))
+        output.write("[{:3}]-> {}\n".format(count, word))
     print("-"*16)
     output.write("-"*16 + "\n")
 
