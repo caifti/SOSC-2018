@@ -7,7 +7,7 @@
     "instances": 1,
     "container": {
       "docker": {
-        "image": "dciangot/sosc2018app",
+        "image": "dciangot/sosc2018myapp",
         "network": "BRIDGE",
         "portMappings": [
           {
