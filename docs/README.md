@@ -20,7 +20,7 @@
 - Mesos-Marathon deployment
   - needed for the second part
 
-## Hads-on-Part2
+## Hands-on-Part2
 
 ### [Apache Spark](apache_spark.md)
 
