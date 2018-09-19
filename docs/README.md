@@ -1,5 +1,7 @@
 # Hands on session
 
+[![tosca](img/handson.png)](https://dodas-ts.github.io/SOSC-2018/img/handson.png)
+
 ## Hands-on-Part1
 
 ### [Ansible playbook 'Hello world'](ansible.md)
