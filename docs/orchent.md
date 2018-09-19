@@ -4,15 +4,13 @@
 
 When working with cloud resources, depending on the user needs, different layers of underlyng abstraction can be needed, and depending on how many layers and their composition one can define different categories.
 
-![PaaS](img/platform-spectrum-small.png)
+[![PaaS](img/platform-spectrum-small.png)](https://dodas-ts.github.io/SOSC-2018/img/platform-spectrum-small.png)
 
-This part of the hands-on will focus on PaaS, for other "as a Service", take a look at this interesting post [here](https://mesosphere.com/blog/iaas-vs-caas-vs-paas-vs-faas/) from which the pictures credits are.
+This part of the hands-on will focus on PaaS, for other "as a Service", take a look at this interesting post [here](https://mesosphere.com/blog/iaas-vs-caas-vs-paas-vs-faas/) from which, for this page, pictures and description credits are.
 
 ## Platform as a Service on top of Infrastracture as a Service
 
-![PaaS](img/PaaS-IaaS.png)
-
-__TODO__ rephrase
+[![PaaS](img/PaaS-IaaS.png)](https://dodas-ts.github.io/SOSC-2018/img/PaaS-IaaS.png)
 
 Infrastructure as a service (IaaS)  is a cloud computing offering in which a vendor provides users access to computing resources such as servers, storage and networking. Organizations use their own platforms and applications within a service provider’s infrastructure.
 
@@ -37,6 +35,8 @@ Key features:
 __In this hands-on a webserver will be deployed on cloud resources in an automated way thanks the use of a PaaS orchestrator and TOSCA system description files.__
 
 ## INDIGO-DC PaaS orchestrator
+
+[![tosca](img/sosc-indigo.png)](https://dodas-ts.github.io/SOSC-2018/img/sosc-indigo.png)
 
 [The INDIGO PaaS Orchestrator](https://github.com/indigo-dc/orchestrator) allows to instantiate resources on Cloud Management Frameworks (like OpenStack and OpenNebula) platforms based on deployment requests that are expressed through templates written in [TOSCA YAML Simple Profile v1.0](https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.0/csprd01/TOSCA-Simple-Profile-YAML-v1.0-csprd01.html), and deploys them on the best cloud site available.
 
@@ -71,6 +71,8 @@ export ORCHENT_URL=https://orchestrator.cloud.cnaf.infn.it/orchestrator
 ```
 
 ### Using TOSCA
+
+[![tosca](img/tosca.png)](https://dodas-ts.github.io/SOSC-2018/img/tosca.png)
 
 The TOSCA metamodel uses the concept of service templates to describe cloud workloads as a topology template, which is a graph of node templates modeling the components a workload is made up of and as relationship templates modeling the relations between those components. TOSCA further provides a type system of node types to describe the possible building blocks for constructing a service template, as well as relationship type to describe possible kinds of relations. Both node and relationship types may define lifecycle operations to implement the behavior an orchestration engine can invoke when instantiating a service template. For example, a node type for some software product might provide a ‘create’ operation to handle the creation of an instance of a component at runtime, or a ‘start’ or ‘stop’ operation to handle a start or stop event triggered by an orchestration engine. Those lifecycle operations are backed by implementation artifacts such as scripts or Chef recipes that implement the actual behavior.
 

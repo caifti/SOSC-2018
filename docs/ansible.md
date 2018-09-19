@@ -11,7 +11,7 @@ cd SOSC-2018
 
 ## What's Ansible
 
-[![ansible](img/ansible.webp)](https://dodas-ts.github.io/SOSC-2018/img/img/ansible.webp)
+[![ansible](img/ansible.webp)](https://dodas-ts.github.io/SOSC-2018/img/ansible.webp)
 
 [Ansible](https://www.ansible.com) is a software that consistently automatize the configuration management. The Ansible configurations are a set of minimal infrastracture descriptions that are easy to read and to mantain, reducing the amount of work needed to setup environment and softwares on data centers or even on a laptop.
 Ansible does not require any remote agents and delivers all modules to remote systems that execute tasks, as needed, to deploy the desired configuration.
