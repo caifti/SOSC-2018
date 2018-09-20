@@ -251,6 +251,10 @@ topology_template:
         endpoint:
           properties:
             dns_name: mesosslave
+            ports:
+              all_tcp:
+                protocol: tcp
+                source_range: [ 1, 65535 ]
         host:
           properties:
             num_cpus: { get_input: slave_cpus }
