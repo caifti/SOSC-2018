@@ -155,7 +155,8 @@ topology_template:
 
     server_image:
       type: string
-      default: "ost://cloud.recas.ba.infn.it/1113d7e8-fc5d-43b9-8d26-61906d89d479"  # BARI FARM
+      # default: "ost://cloud.recas.ba.infn.it/1113d7e8-fc5d-43b9-8d26-61906d89d479"
+      default: "ost://horizon.cloud.cnaf.infn.it/0b18691b-2c67-4800-876e-60802024c64f"
 
   node_templates:
 
