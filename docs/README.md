@@ -1,5 +1,13 @@
 # Hands on session
 
+## Contacts
+
+Diego Ciangottini (diego.ciangottini\<at\>pg.infn.it)
+
+Mirco Tracolli (mirco.tracolli\<at\>pg.infn.it)
+
+## Objective
+
 [![tosca](img/handson.png)](https://dodas-ts.github.io/SOSC-2018/img/handson.png)
 
 ## Hands-on-Part1
