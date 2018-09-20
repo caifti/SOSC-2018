@@ -32,7 +32,7 @@ topology_template:
         host:
           properties:
             num_cpus: 2
-            mem_size: "2 GB"
+            mem_size: "4 GB"
         os:
           properties:
             image: "ost://cloud.recas.ba.infn.it/1113d7e8-fc5d-43b9-8d26-61906d89d479"
