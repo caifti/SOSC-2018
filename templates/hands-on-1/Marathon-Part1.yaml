@@ -35,7 +35,7 @@ topology_template:
 
     mem_size_master:
       type: string
-      default: "4 GB"
+      default: "2 GB"
 
     number_of_slaves:
       type: integer
@@ -47,7 +47,7 @@ topology_template:
 
     mem_size_slave:
       type: string
-      default: "4 GB"
+      default: "2 GB"
 
     number_of_lbs:
       type: integer
@@ -63,7 +63,8 @@ topology_template:
 
     server_image:
       type: string
-      default: "ost://cloud.recas.ba.infn.it/1113d7e8-fc5d-43b9-8d26-61906d89d479"
+      #default: "ReCaS-Bari Ubuntu 16.04"
+      default: "ubuntu-xenial-x86_64" 
 
 
   node_templates:

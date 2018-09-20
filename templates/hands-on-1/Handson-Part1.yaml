@@ -36,6 +36,7 @@ topology_template:
         os:
           properties:
             image: "ost://cloud.recas.ba.infn.it/1113d7e8-fc5d-43b9-8d26-61906d89d479"
+            #image: "ubuntu-xenial-x86_64"
 
     apache_install:
       type: tosca.nodes.WebServer.Apache
