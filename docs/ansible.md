@@ -13,9 +13,9 @@ cd SOSC-2018
 
 [![ansible](img/ansible.webp)](https://dodas-ts.github.io/SOSC-2018/img/ansible.webp)
 
-[Ansible](https://www.ansible.com) is a software that consistently automatize the configuration management. The Ansible configurations are a set of minimal infrastracture descriptions that are easy to read and to mantain, reducing the amount of work needed to setup environment and softwares on data centers or even on a laptop.
+[Ansible](https://www.ansible.com) is __a software that consistently automatize the configuration management.__ The Ansible configurations are a set of minimal infrastracture descriptions that are easy to read and to mantain, reducing the amount of work needed to setup environment and softwares on data centers or even on a laptop.
 Ansible does not require any remote agents and delivers all modules to remote systems that execute tasks, as needed, to deploy the desired configuration.
-[Ansible Galaxy](https://galaxy.ansible.com/) also has over 4,000 community-provided roles that can be used by anyone and tailored to different environments.
+[Ansible Galaxy](https://galaxy.ansible.com/) also has over __4,000 community-provided roles__ that can be used by anyone and tailored to different environments.
 
 __In this hands-on we are going to deploy a simple web server application as a first introduction to Ansible recipes.__
 
@@ -23,7 +23,7 @@ __In this hands-on we are going to deploy a simple web server application as a f
 
 ### Playbooks
 
-Playbooks are the Ansible building blocks. They describes the desired infrastracture with a sequence of states and checks, that will be automatically deployed at installation time. Ansible infact implements a "state-driven" paradigm, that does not indicate the exact chain of commands but instead check a sequential list of machine state. But let's do an exercise to understand better the basics.
+Playbooks are the Ansible building blocks. They __describe the desired infrastracture with a sequence of states and checks, that will be automatically deployed at installation time.__ Ansible infact implements a "state-driven" paradigm, that __does not indicate the exact chain of commands but instead check a sequential list of machine state__. But let's do an exercise to understand better the basics.
 
 - install the apache2 packages on localhost
 
